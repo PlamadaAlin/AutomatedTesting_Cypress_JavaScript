@@ -13,6 +13,13 @@ describe('Teste google',()=>{
         cy.contains('Imagini').click();
         cy.url().should('include', '/search?').and('include', 'q=pisici');
     });
-   
+    it('Uses the "I\'m Feeling Lucky" button', () => {
+        cy.visit('https://google.com');
+        cy.get('#L2AGLb').click();
+        cy.get('.gLFyf').type('Cypress Testing');
+        cy.wait(2000);
+        cy.contains("Mă simt norocos").click();
+        cy.url().should('not.include', 'search');
+      });
 
 });
